@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://qingyandream.github.io</id>
+    <title>QingYan</title>
+    <updated>2024-03-27T12:47:15.167Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://qingyandream.github.io"/>
+    <link rel="self" href="https://qingyandream.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://qingyandream.github.io/images/avatar.png</logo>
+    <icon>https://qingyandream.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, QingYan</rights>
+    <entry>
+        <title type="html"><![CDATA[ LeetCode 485. 最大连续 1 的个数]]></title>
+        <id>https://qingyandream.github.io/post/algorithm-java-01/</id>
+        <link href="https://qingyandream.github.io/post/algorithm-java-01/">
+        </link>
+        <updated>2024-03-27T12:30:53.000Z</updated>
+        <content type="html"><![CDATA[<p>给定一个二进制数组 nums ， 计算其中最大连续 1 的个数。</p>
+<pre><code class="language-text">示例 1：
+
+输入：nums = [1,1,0,1,1,1]
+输出：3
+解释：开头的两位和最后的三位都是连续 1 ，所以最大连续 1 的个数是 3.
+示例 2:
+
+输入：nums = [1,0,1,1,0,1]
+输出：2
+</code></pre>
+<p>根据题目可以知道，我们要求的是最大连续 1 的个数，所以要对数组进行遍历，我们定义两个参数用来记录连续个数，为什么要设置两个呢？因为，当我们遍历数组，我们是不是要把之前的连续是1的个数记录下来？是的，我们可以用temp用来记录之前连续1的个数，当我们遍历到0的时候我们做一个比较，比较一下temp和coiled二者谁比较大 ，把大的值赋给coiled，在把temp重置为0；最后返回的也要做一个比较，防止数组末尾是1。</p>
+<p>解题代码如下：</p>
+<pre><code class="language-java">class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+    int coiled=0;
+    int temp=0;
+    for(int x:nums){
+        if(x==1){
+            temp++;
+        }
+        if(x==0){
+           coiled=Math.max(temp,coiled);
+           temp=0;
+        }
+    }
+    //确保最后一次遍历正确
+    return Math.max(coiled,temp);
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
+</feed>
